@@ -1,20 +1,27 @@
-# Python_AWS_boto3
-Practicing the AWS Services using Python boto3 SDK.
+# Python AWS Boto3
+AWS SDK (Boto3) practice repository.
 
-# 1. AWS S3 Boto3 Practice
+## AWS S3 Operations
 
-## Features
+### Bucket Operations
 - Create Bucket
 - List Buckets
 - Delete Bucket
+
+### Object Operations
 - Upload Object
 - Download Object
 - Copy Object
+- Rename Object (Copy + Delete)
 - Delete Object
-- Head Object
+- Head Object (Metadata)
 - List Objects
 
 ## Technologies
-- Python 3.x
-- boto3
+- Python 3.14
+- Boto3
 - AWS S3
+- AWS CLI
+
+## Author
+Pavan Kumar Kakarla
