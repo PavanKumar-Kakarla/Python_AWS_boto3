@@ -2,6 +2,7 @@ import boto3
 
 # Define the region explicitly
 REGION = "ap-south-1"
+BUCKET_NAME = "pavan-boto3-demo-2026"
 
 # Create an Object for S3 Service using Client
 s3_client = boto3.client("s3", region_name=REGION)
@@ -14,7 +15,7 @@ to specify the target region where the bucket should be created."""
 def create_bucket():
     try:
         response = s3_client.create_bucket(
-            Bucket="pavan-boto3-demo-2026",
+            Bucket=BUCKET_NAME,
             CreateBucketConfiguration={
                 'LocationConstraint': REGION
             }
@@ -28,7 +29,7 @@ def create_bucket():
 def delete_bucket():
     try:
         s3_client.delete_bucket(
-            Bucket="pavan-boto3-demo-2026"
+            Bucket=BUCKET_NAME
         )
         print("Bucket deleted successfully")
     except Exception as e:

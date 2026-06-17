@@ -2,6 +2,7 @@ import boto3
 
 # Define the region explicitly
 REGION = "ap-south-1"
+BUCKET_NAME = "pavan-boto3-demo-2026"
 
 # Create an Object for S3 Service using Client
 s3_client = boto3.client("s3", region_name=REGION)
@@ -12,7 +13,7 @@ def upload_object():
     try:
         s3_client.upload_file(
             Filename=r"D:\test.txt",
-            Bucket="pavan-boto3-demo-2026",
+            Bucket=BUCKET_NAME,
             Key="test.txt"
         )
         print("File Uploaded Successfully")
@@ -24,7 +25,7 @@ def upload_object():
 def download_object():
     try:
         s3_client.download_file(
-            "pavan-boto3-demo-2026",
+           BUCKET_NAME,
             "test.txt",
             r"D:\download-test.txt"
         )
@@ -37,13 +38,13 @@ def download_object():
 def copy_object():
     try:
         copy_source = {
-            "Bucket": "pavan-boto3-demo-2026",
+            "Bucket": BUCKET_NAME,
             "Key": "test.txt"
         }
 
         s3_client.copy_object(
             CopySource=copy_source,
-            Bucket="pavan-boto3-demo-2026",
+            Bucket=BUCKET_NAME,
             Key="test-renamed.txt"
         )
         print("Object Copied Successfully")
@@ -54,7 +55,7 @@ def copy_object():
 def delete_object():
     try:
         s3_client.delete_object(
-            Bucket="pavan-boto3-demo-2026",
+            Bucket=BUCKET_NAME,
             Key="test.txt"
         )
         print("Object Deleted Successfully")
@@ -65,7 +66,7 @@ def delete_object():
 def meta_data():
     try:
         response = s3_client.head_object(
-            Bucket="pavan-boto3-demo-2026",
+            Bucket=BUCKET_NAME,
             Key="test-renamed.txt"
         )
 
@@ -84,7 +85,7 @@ def meta_data():
 def list_objects():
     try:
         response = s3_client.list_objects_v2(
-            Bucket="pavan-boto3-demo-2026"
+            Bucket=BUCKET_NAME
         )
         for obj in response["Contents"]:
             print("Key :", obj["Key"])
