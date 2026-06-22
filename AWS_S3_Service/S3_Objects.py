@@ -95,10 +95,35 @@ def list_objects():
     except Exception as e:
         print("S3 Objects List Failed", str(e))
 
+# Write objects to S3 Bucket without uploading from local
+def put_objects():
+    try:
+        s3_client.put_object(
+            Bucket=BUCKET_NAME,
+            Key="employee.txt",
+            Body="Hello Pavan"
+        )
+    except Exception as e:
+        print("Put Objects Failed", str(e))
+
+# Get objects from S3 Bucket
+def get_objects():
+    try:
+        response = s3_client.get_object(
+            Bucket=BUCKET_NAME,
+            Key="employee.txt"
+        )
+        # print(response)
+        data = response["Body"].read().decode("utf-8")
+        print(data)
+    except Exception as e:
+        print("Put Objects Failed", str(e))
 
 # upload_object()
 # download_object()
 # copy_object()
 # delete_object()
 # meta_data()
+# put_objects()
+# get_objects()
 list_objects()
